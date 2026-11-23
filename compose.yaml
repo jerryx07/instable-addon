@@ -1,0 +1,14 @@
+services:
+  sound-addon:
+    build: .
+    restart: unless-stopped
+    init: true
+    ports:
+      - "127.0.0.1:${PORT:-8787}:8787"
+    environment:
+      HOST: 0.0.0.0
+      PORT: 8787
+      INSTABLE_API_URL: ${INSTABLE_API_URL:-https://instable.arcod.xyz}
+      MONOCHROME_API_URL: ${MONOCHROME_API_URL:-https://tracks.monochrome.st}
+      ADDON_ACCESS_KEY: ${ADDON_ACCESS_KEY:-}
+      ADDON_ALLOW_DOWNLOADS: ${ADDON_ALLOW_DOWNLOADS:-false}
